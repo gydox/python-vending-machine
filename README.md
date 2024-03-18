@@ -1,5 +1,5 @@
 # python-vending-machine
-Python Vending Machine
+## Python Vending Machine
 
 A simple vending machine logic that will dispense the least amount of notes as change to the user. It has a main logic to make the code easier to test
 
