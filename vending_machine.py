@@ -122,14 +122,6 @@ class VendingMachine:
                 return None
         return change
 
-    # def deduct_balance(self, change):
-    #     print("Deducting vending machine balance")
-    #     print("change: ", change)
-    #     for key in self.balance:
-    #         if key in change:
-    #             self.balance[key] -= change[key]
-    #     return change
-
 
 if __name__ == "__main__":
     vm = VendingMachine()
