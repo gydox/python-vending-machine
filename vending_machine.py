@@ -12,6 +12,10 @@ class VendingMachine:
     """
 
     def __init__(self):
+        """
+        Initializes the VendingMachine object with default drinks, balance, and credit.
+        """
+
         self.drinks = [
             {"name": "Coca-cola", "price": 3, "stock": 1},
             {"name": "Sprite", "price": 45, "stock": 8},
@@ -38,6 +42,14 @@ class VendingMachine:
         }
 
     def display_drinks(self):
+        """
+        Displays the list of available drinks along with their prices and stock levels.
+
+        Prints:
+            - The list of available drinks with their names, prices, and stock levels.
+            - The total credits the user currently has.
+        """
+
         print("========== DRINKS SELECTION ==========")
         for i, drink in enumerate(self.drinks):
             print(str(i) + " : " + drink['name'] + " RM" +
@@ -50,12 +62,29 @@ class VendingMachine:
             print("RM" + str(denomination) + ": " + str(count))
 
     def get_total_credit(self):
+        """
+        Calculates the total credit the user currently has.
+
+        Returns:
+            int: The total credit the user currently has.
+        """
+
         total = 0
         for key, value in self.credit.items():
             total += key * value
         return total
 
     def add_money(self, amount):
+        """
+        Adds the specified amount of money to the user's credit.
+
+        Args:
+            amount (int): The amount of money (in note denomination) to be added.
+
+        Returns:
+            int: The amount of money successfully added to the user's credit, or 0 if the note denomination is invalid.
+        """
+
         print("amount",  amount)
         if amount not in self.balance:
             print("Invalid note")
@@ -67,11 +96,29 @@ class VendingMachine:
             return amount
 
     def return_credit(self):
+        """
+        Returns all the credit the user currently has.
+
+        Clears the user's credit by setting all credit values to 0.
+
+        Note: Created seperate function for this in case would want to  implement a different action later on.
+        """
         for key in self.credit:
             self.credit[key] = 0
         print("Returned all credit")
 
     def buy_drink(self, drink_index):
+        """
+        Allows the user to buy a drink from the vending machine.
+
+        Args:
+            drink_index (int): The index of the selected drink in the drinks list.
+
+        Prints:
+            - Information about the transaction, including the selected drink, its price,
+              and whether the transaction is successful.
+        """
+
         if drink_index >= 0 and drink_index < len(self.drinks):
             selected_drink = self.drinks[drink_index]
             if self.drinks[drink_index]["stock"] > 0:
@@ -113,6 +160,17 @@ class VendingMachine:
             print("invalid selection")
 
     def get_change(self, amount):
+        """
+        Calculates the change to be returned based on the specified amount.
+
+        Args:
+            amount (int): The amount of change to be calculated.
+
+        Returns:
+            dict or None: A dictionary representing the change to be returned,
+                          or None if the vending machine does not have enough change.
+        """
+
         change = {}
         while amount > 0:
             for key, value in self.balance.items():
