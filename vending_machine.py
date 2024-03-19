@@ -1,8 +1,17 @@
-
-
 class VendingMachine:
-    def __init__(self):
+    """
+    A class representing a vending machine that sells drinks.
 
+    Attributes:
+        drinks (list): A list of dictionaries containing information about available drinks,
+                    including name, price, and stock.
+        balance (dict): A dictionary representing the vending machine's balance of notes
+                        and their quantities.
+        credit (dict): A dictionary representing the user's credit, with note denominations
+                    as keys and the quantity of each denomination as values.
+    """
+
+    def __init__(self):
         self.drinks = [
             {"name": "Coca-cola", "price": 3, "stock": 1},
             {"name": "Sprite", "price": 45, "stock": 8},
@@ -37,7 +46,6 @@ class VendingMachine:
         print("Total credits:", self.get_total_credit())
         print("======================================")
 
-    def display_balance(self):
         for denomination, count in self.balance.items():
             print("RM" + str(denomination) + ": " + str(count))
 
