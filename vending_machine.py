@@ -73,8 +73,8 @@ class VendingMachine:
 
     def buy_drink(self, drink_index):
         if drink_index >= 0 and drink_index < len(self.drinks):
+            selected_drink = self.drinks[drink_index]
             if self.drinks[drink_index]["stock"] > 0:
-                selected_drink = self.drinks[drink_index]
                 print("Buying", selected_drink["name"],
                       "at RM"+str(selected_drink["price"]))
                 price = selected_drink["price"]
@@ -108,8 +108,7 @@ class VendingMachine:
                         print("Returning credit...")
                         self.return_credit()
             else:
-                print("Not enough stock")
-                self.return_credit()
+                print(selected_drink["name"] + " not enough stock")
         else:
             print("invalid selection")
 
@@ -153,4 +152,5 @@ if __name__ == "__main__":
                     "Which drink would you like? (choose drink index) \n")
                 vm.buy_drink(int(drink_selection))
             elif int(choice) == 3:
+                print("user ejected money")
                 vm.return_credit()
